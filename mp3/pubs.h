@@ -9,11 +9,10 @@ protected:
 	string name = "";
 	double price = 0.0;
 public:
-	Publication(string t = "TBD", double p = 0.0) : name(t), price(p) {}
-	void readData();
-	void dispData();
-	//string retName();
-	//double retPrice();
+	Publication();
+	//Publication(string t = "TBD", double p = 0.0) : name(t), price(p) {}
+	virtual void readData();
+	virtual void dispData();
 };
 
 class Sales
@@ -44,4 +43,3 @@ public:
 	void readData();
 	void dispData();
 };
-

@@ -5,16 +5,20 @@ using namespace std;
 
 int main()
 {
-	Book cunt;
-	Book *fuck = &cunt;
-
+	Book foo;
+	Book *bar = &foo;
 
 	int i = 0;
 	Publication *pubs[5];
-	*pubs = &cunt;
 
-	cout << &cunt << " " << fuck << endl;
-	cout << pubs[0] << endl;
+	for (int i = 0)
+
+	(*pubs)[0].readData();
+
+	cout << &foo << endl;
+	cout << bar << endl;
+
+	//foo.readData();
 
 	//for (i = 0; i < 2; i++)
 	//	pubs[i] = new Book();

@@ -3,6 +3,11 @@
 
 using namespace std;
 
+Publication::Publication()
+{
+	cout << "Publication created " << endl;
+}
+
 void Publication::readData()
 {
 	cout << "Enter Data: " << endl;
