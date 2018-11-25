@@ -1,10 +1,13 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 class StockType
 {
+	friend istream& operator>>(istream& is, StockType rhs);
+	friend ostream& operator<<(ostream& os, const StockType rhs);
 private:
 	string symbol = "";
 	double	openPrice = 0.0,
@@ -19,6 +22,9 @@ public:
 	void readData();
 	void dispData();
 	void calcGL();
+
+	bool operator>(const StockType& stock);
+	bool operator<(const StockType& stock);
 };
 
 template <typename T>
