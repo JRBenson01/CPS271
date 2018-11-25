@@ -6,8 +6,8 @@ using namespace std;
 
 class StockType
 {
-	friend istream& operator>>(istream& is, StockType rhs);
-	friend ostream& operator<<(ostream& os, const StockType rhs);
+	friend istream& operator>>(istream& is, StockType& rhs);
+	friend ostream& operator<<(ostream& os, StockType& rhs);
 private:
 	string symbol = "";
 	double	openPrice = 0.0,
@@ -22,8 +22,10 @@ public:
 
 	string retSymbol();
 
-	void readData();
+	void readData(istream& is);
+
 	void dispData();
+	void dispData(ostream& os);
 	void calcGL();
 
 	bool operator>(StockType& stock);
@@ -34,7 +36,7 @@ template <typename T>
 class StockListType
 {
 private:
-	vector<T> stockList;
+	//vector<T> stockList;
 public:
 
 };
