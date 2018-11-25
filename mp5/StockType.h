@@ -19,12 +19,15 @@ private:
 	int numOfShares = 0;
 public:
 	StockType();
+
+	string retSymbol();
+
 	void readData();
 	void dispData();
 	void calcGL();
 
-	bool operator>(const StockType& stock);
-	bool operator<(const StockType& stock);
+	bool operator>(StockType& stock);
+	bool operator<(StockType& stock);
 };
 
 template <typename T>

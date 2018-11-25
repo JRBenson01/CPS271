@@ -9,9 +9,14 @@ StockType::StockType()
 
 }
 
+string StockType::retSymbol()
+{
+	return symbol;
+}
+
 istream& operator>>(istream& is, StockType rhs)
 {
-
+	
 }
 
 ostream& operator<<(ostream& os, const StockType rhs)
@@ -19,14 +24,14 @@ ostream& operator<<(ostream& os, const StockType rhs)
 
 }
 
-bool StockType::operator<(const StockType& stock)
+bool StockType::operator<(StockType& stock)
 {
-
+	return this->symbol < stock.retSymbol();
 }
 
-bool StockType::operator>(const StockType& stock)
+bool StockType::operator>(StockType& stock)
 {
-
+	return this->symbol > stock.retSymbol();
 }
 
 void StockType::readData()
