@@ -1,12 +1,13 @@
 #include <string>
 #include <iostream>
+#include <vector>
 #include "StockType.h"
 
 using namespace std;
 
 StockType::StockType()
 {
-	cout << "Stock created" << endl;
+	//cout << "Stock created" << endl;
 }
 
 string StockType::retSymbol()
@@ -16,7 +17,7 @@ string StockType::retSymbol()
 
 istream& operator>>(istream& is, StockType& rhs)
 {
-	cout << "Getting data" << endl;
+	//cout << "Getting data" << endl;
 	rhs.readData(is);
 	return is;
 }
@@ -61,16 +62,40 @@ void StockType::dispData()
 
 void StockType::dispData(ostream& os)
 {
-	os << symbol << endl
-		<< openPrice << endl
-		<< closePrice << endl
-		<< highPrice << endl
-		<< lowPrice << endl
-		<< prevPrice << endl
-		<< numOfShares << endl;
+	os << symbol << "\t"
+		<< openPrice << "\t"
+		<< closePrice << "\t"
+		<< highPrice << "\t"
+		<< lowPrice << "\t"
+		<< prevPrice << "\t"
+		<< numOfShares << "\t"
+		<< endl;
 }
 
 void StockType::calcGL()
+{
+
+}
+
+void StockListType::readData(istream& fin)
+{
+	while (fin)
+	{
+		StockType temp;
+		fin >> temp;
+		stockList.push_back(temp);
+	}
+}
+
+void StockListType::dispData(ostream& fout)
+{
+	for (int i = 0; i < stockList.size(); i++)
+	{
+		cout << stockList[i];
+	}
+}
+
+void StockListType::sortData()
 {
 
 }

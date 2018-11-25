@@ -8,10 +8,11 @@ using namespace std;
 int main()
 {
 	StockType s1;
+	StockListType stocks;
 
 	ifstream fin("mp5input.txt");
+	ofstream fout("mp5output.txt");
 
-	fin >> s1;
-
-	cout << s1;
+	stocks.readData(fin);
+	stocks.dispData(fout);
 }

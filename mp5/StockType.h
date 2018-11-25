@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -32,11 +33,12 @@ public:
 	bool operator<(StockType& stock);
 };
 
-template <typename T>
 class StockListType
 {
 private:
-	//vector<T> stockList;
+	vector<StockType> stockList;
 public:
-
+	void readData(istream& fin);
+	void dispData(ostream& fout);
+	void sortData();
 };
