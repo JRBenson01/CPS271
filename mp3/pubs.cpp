@@ -34,9 +34,9 @@ void Sales::readData()
 void Sales::dispData()
 {
 	cout << "Sales: ";
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 3; i++)
 	{
-		cout << "M" << i << ": " << sales[i] << "\t";
+		cout << "M" << i+1 << ": " << sales[i] << "\t";
 	}
 	cout << endl;
 }
@@ -58,6 +58,7 @@ void Book::dispData()
 {
 	Publication::dispData();
 	cout << "Number of Pages: " << pages << endl;
+	Sales::dispData();
 }
 
 Tape::Tape()
