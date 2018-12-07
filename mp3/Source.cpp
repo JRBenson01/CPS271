@@ -5,30 +5,28 @@ using namespace std;
 
 int main()
 {
-	Book foo;
-	Book *bar = &foo;
+	//Publication *pubs = nullptr;
 
-	int i = 0;
-	Publication *pubs[5];
+	Publication **pubs = new Publication*[5];
 
-	for (int i = 0)
+	for (int i = 0; i < 5; i++)
+	{
+		char bt;
+		cout << "Book or tape?: ";
+		cin >> bt;
+		switch (bt)
+		{
+		case 'b': pubs[i] = new Book(); break;
+		case 't': pubs[i] = new Tape(); break;
+		default: i = 5; break;
+		}
+		pubs[i]->readData();
+	}
 
-	(*pubs)[0].readData();
+	pubs[0] = new Book();
 
-	cout << &foo << endl;
-	cout << bar << endl;
+	pubs[0]->readData();
+	pubs[0]->dispData();
 
-	//foo.readData();
-
-	//for (i = 0; i < 2; i++)
-	//	pubs[i] = new Book();
-
-	//for (i; i < 5; i++)
-	//	pubs[i] = new Tape();
-
-	//for (int i = 0; i < sizeof(*pubs); i++)
-	//	pubs[i]->readData();
-
-	//for (int i = 0; i < sizeof(*pubs); i++)
-	//	pubs[i]->dispData();
+	return 0;
 }
