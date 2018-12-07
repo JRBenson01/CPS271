@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
+#include <iomanip>
 #include <vector>
+#include <algorithm>
 #include "StockType.h"
 
 using namespace std;
@@ -62,24 +64,45 @@ void StockType::dispData()
 
 void StockType::dispData(ostream& os)
 {
-	os << symbol << "\t"
-		<< openPrice << "\t"
-		<< closePrice << "\t"
-		<< highPrice << "\t"
-		<< lowPrice << "\t"
-		<< prevPrice << "\t"
-		<< numOfShares << "\t"
+	const int len = 8;
+
+	calcGL();
+
+	os << setw(len)
+		<< symbol << setw(len)
+		<< openPrice << setw(len)
+		<< closePrice << setw(len)
+		<< highPrice << setw(len)
+		<< lowPrice
+		<< setw(20) << " "
+		<< setw(len)
+		<< prevPrice << setw(len)
+		<< percentGainOrLoss
 		<< endl;
+
+
+	//char tab = '\t';
+
+	//os << symbol << tab 
+	//	<< openPrice << tab
+	//	<< closePrice << tab
+	//	<< highPrice << tab
+	//	<< lowPrice << tab
+	//	<< prevPrice << tab
+	//	<< numOfShares << tab
+	//	<< endl;
 }
 
-void StockType::calcGL()
+double StockType::calcGL()
 {
-
+	percentGainOrLoss = (closePrice - prevPrice) / (prevPrice * 100);
+	return percentGainOrLoss;
 }
 
 void StockListType::readData(istream& fin)
 {
-	while (fin)
+	int count = 0;
+	while (!fin.eof())
 	{
 		StockType temp;
 		fin >> temp;
@@ -87,15 +110,37 @@ void StockListType::readData(istream& fin)
 	}
 }
 
-void StockListType::dispData(ostream& fout)
+void StockListType::dispData(ostream& os)
 {
+	char tab = '\t';
+	const int len = 8;
+
+	os << right
+		<< setw(20) << "Today"
+		<< setw(45) << "Yesterday";
+
+	os << endl;
+
+	os << left << setw(len)
+		<< "SYM" << setw(len)
+		<< "OPEN" << setw(len)
+		<< "CLOSE" << setw(len)
+		<< "HIGH" << setw(len)
+		<< "LOW";
+
+	os << setw(20) << " ";
+
+	os << setw(len) << "CLOSE"
+		<< setw(len) << "SHARES"
+		<< setw(len) << "G/L"
+		<< endl;
 	for (int i = 0; i < stockList.size(); i++)
 	{
-		cout << stockList[i];
+		os << stockList[i];
 	}
 }
 
 void StockListType::sortData()
 {
-
+	sort(stockList.begin(), stockList.end());
 }

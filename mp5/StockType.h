@@ -27,7 +27,7 @@ public:
 
 	void dispData();
 	void dispData(ostream& os);
-	void calcGL();
+	double calcGL();
 
 	bool operator>(StockType& stock);
 	bool operator<(StockType& stock);
