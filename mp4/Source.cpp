@@ -8,4 +8,5 @@ int main()
 {
 	Report r1;
 	r1.readData();
+	r1.dispData();
 }
