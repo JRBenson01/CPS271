@@ -1,0 +1,25 @@
+Book or tape?: b
+Publication created
+Book type created
+Enter Data:
+Name: Gone with the Wind
+Price($): 59.99
+Number of Pages: 566
+Enter sales from the last 3 months: 38 41 29
+Book or tape?: t
+Publication created
+Tape type created
+Enter Data:
+Name: Beethoven
+Price($): 99.99
+Time (minutes): 60
+Enter sales from the last 3 months: 7 4 11
+Book or tape?: e
+Name: Gone with the Wind
+Price: $59.99
+Number of Pages: 566
+Sales: M1: 38   M2: 41  M3: 29
+
+Name: Beethoven
+Price: $99.99
+Time: 60 minutes

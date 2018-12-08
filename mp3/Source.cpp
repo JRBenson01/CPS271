@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	//Publication *pubs = nullptr;
+	int size = 0;
 
 	Publication **pubs = new Publication*[5];
 
@@ -14,19 +14,21 @@ int main()
 		char bt;
 		cout << "Book or tape?: ";
 		cin >> bt;
-		switch (bt)
-		{
-		case 'b': pubs[i] = new Book(); break;
-		case 't': pubs[i] = new Tape(); break;
-		default: i = 5; break;
-		}
+		if (bt == 'b')
+			pubs[i] = new Book();
+		else if (bt == 't')
+			pubs[i] = new Tape();
+		else
+			break;
 		pubs[i]->readData();
+		size++;
 	}
 
-	pubs[0] = new Book();
-
-	pubs[0]->readData();
-	pubs[0]->dispData();
+	for (int i = 0; i < size; i++)
+	{
+		pubs[i]->dispData();
+		cout << endl;
+	}
 
 	return 0;
 }
