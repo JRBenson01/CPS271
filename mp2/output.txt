@@ -1,0 +1,29 @@
+Account Opened with a starting balance of $500.00
+Account Opened with a starting balance of $1000.00
+$230.00 withdrawn from Checking account. Transaction fee: $4.60
+Checking Account Balance: $265.40
+
+$100.85 withdrawn from Savings Account.
+Savings Account Balance: $899.15
+
+$400.25 added to Checking account. Transaction fee: $8.01
+Checking Account Balance: $657.64
+
+$250.00 added to Checking account. Transaction fee: $5.00
+Checking Account Balance: $902.64
+
+$500.00 added to Savings Account.
+Savings Account Balance: $1399.29
+
+ERROR: Withdraw amount exceeds Checking Account balance.
+Checking Account Balance: $902.64
+
+$1000.00 withdrawn from Savings Account.
+Savings Account Balance: $399.29
+
+ERROR: Debit amount exceeded account balance.
+Savings Account Balance: $399.29
+
+ERROR: Credit transaction amount was negative.
+ERROR: Transaction in Savings Account didn't go through.
+Savings Account Balance: $399.29

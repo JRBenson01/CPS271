@@ -9,7 +9,7 @@ using namespace std;
 
 StockType::StockType()
 {
-	//cout << "Stock created" << endl;
+	
 }
 
 string StockType::retSymbol()
@@ -19,7 +19,6 @@ string StockType::retSymbol()
 
 istream& operator>>(istream& is, StockType& rhs)
 {
-	//cout << "Getting data" << endl;
 	rhs.readData(is);
 	return is;
 }
@@ -68,34 +67,24 @@ void StockType::dispData(ostream& os)
 
 	calcGL();
 
-	os << setw(len)
-		<< symbol << setw(len)
-		<< openPrice << setw(len)
-		<< closePrice << setw(len)
-		<< highPrice << setw(len)
-		<< lowPrice
-		<< setw(20) << " "
-		<< setw(len)
-		<< prevPrice << setw(len)
-		<< percentGainOrLoss
+	os << left << setprecision(2) << fixed
+		<< setw(len) << symbol
+		<< right
+		<< setw(len) << openPrice 
+		<< setw(len) << closePrice 
+		<< setw(len) << highPrice 
+		<< setw(len) << lowPrice
+		<< setw(10) << " "
+		<< setw(20) << prevPrice
+		<< setw(10) << " "
+		<< setw(len) << numOfShares 
+		<< setw(len) << percentGainOrLoss << "%"
 		<< endl;
-
-
-	//char tab = '\t';
-
-	//os << symbol << tab 
-	//	<< openPrice << tab
-	//	<< closePrice << tab
-	//	<< highPrice << tab
-	//	<< lowPrice << tab
-	//	<< prevPrice << tab
-	//	<< numOfShares << tab
-	//	<< endl;
 }
 
 double StockType::calcGL()
 {
-	percentGainOrLoss = (closePrice - prevPrice) / (prevPrice * 100);
+	percentGainOrLoss = ((closePrice - prevPrice) / prevPrice) * 100;
 	return percentGainOrLoss;
 }
 
@@ -117,22 +106,25 @@ void StockListType::dispData(ostream& os)
 
 	os << right
 		<< setw(20) << "Today"
-		<< setw(45) << "Yesterday";
+		<< setw(52) << "Yesterday"
+		<< setw(28) << "Percent";
 
 	os << endl;
 
-	os << left << setw(len)
-		<< "SYM" << setw(len)
-		<< "OPEN" << setw(len)
-		<< "CLOSE" << setw(len)
-		<< "HIGH" << setw(len)
-		<< "LOW";
+	os << left 
+		<< setw(len) << "SYM" 
+		<< right
+		<< setw(len) << "OPEN" 
+		<< setw(len) << "CLOSE" 
+		<< setw(len) << "HIGH" 
+		<< setw(len) << "LOW";
 
-	os << setw(20) << " ";
+	os << setw(10) << " ";
 
-	os << setw(len) << "CLOSE"
+	os << setw(20) << "CLOSE"
+		<< setw(10) << " "
 		<< setw(len) << "SHARES"
-		<< setw(len) << "G/L"
+		<< right << setw(len) << "G/L"
 		<< endl;
 	for (int i = 0; i < stockList.size(); i++)
 	{
