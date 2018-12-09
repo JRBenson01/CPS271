@@ -6,7 +6,11 @@ using namespace std;
 
 int main()
 {
+	ifstream fin("mp4election.txt");
+
+	Candidate c1;
 	Report r1;
-	r1.readData();
-	r1.dispData();
+
+	fin >> r1;
+	cout << r1;
 }

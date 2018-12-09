@@ -6,6 +6,10 @@
 
 using namespace std;
 
+const int nameLen = 15;
+const int voteLen = 5;
+const char tab = '\t';
+
 void Candidate::setVotes(int *arr)
 {
 	for (int i = 0; i < 3; i++)
@@ -38,8 +42,8 @@ void Report::readData()
 		for (int i = 0; i < 3; i++)
 		{
 			fin >> voteNums[i];
-			voteTotals[i] += voteNums[i];
-			voteTotal += voteNums[i];
+			//voteTotals[i] += voteNums[i];
+			//voteTotal += voteNums[i];
 		}
 
 		temp.setName(name);
@@ -53,14 +57,22 @@ void Report::readData()
 
 void Candidate::dispVotes()
 {
-	const int nameLen = 15;
-	const int voteLen = 5;
 	char tab = '\t';
 	cout << setw(nameLen) << name;
 	for (int i = 0; i < 3; i++)
 		cout << setw(voteLen) << votes[i];
 	cout << setw(voteLen) << voteSum
 		<< endl;
+}
+
+string Candidate::retName()
+{
+	return name;
+}
+
+int *Candidate::retVotes()
+{
+	return votes;
 }
 
 int Candidate::retVoteSum()
@@ -83,9 +95,14 @@ void Report::dispData()
 		voteList[i].dispVotes();
 	}
 	cout << setw(nameLen) << "Total";
-	for (int i = 0; i < 3; i++)
-		cout << setw(voteLen) << voteTotals[i];
-	cout << voteTotal << endl;
+	//for (int i = 0; i < 3; i++)
+		//cout << setw(voteLen) << voteTotals[i];
+	//cout << voteTotal << endl;
+}
+
+void Report::addCand(Candidate cand)
+{
+	voteList.push_back(cand);
 }
 
 //void Report::readData()
@@ -112,12 +129,65 @@ void Report::dispData()
 //	fin.close();
 //}
 
+void FirstReport::addTotals(int *arr)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		voteTotals[i] += arr[i];
+		voteTotalSum += arr[i];
+	}
+}
+
 istream& operator>>(istream& is, Candidate& rhs)
 {
-	
+	is >> rhs.name;
+	for (int i = 0; i < 3; i++)
+	{
+		is >> rhs.votes[i];
+		rhs.voteSum += rhs.votes[i];
+	}
+
+	return is;
 }
 
 ostream& operator<<(ostream& os, Candidate& rhs)
 {
+	os << left << setw(nameLen) << rhs.name;
+	for (int i = 0; i < 3; i++)
+		os << setw(voteLen) << rhs.votes[i];
+	os << setw(voteLen) << rhs.voteSum
+		<< endl;
 
+	return os;
+}
+
+istream& operator>>(istream& is, Report& rhs)
+{
+	while (!is.eof())
+	{
+		Candidate temp;
+		is >> temp;
+		rhs.addCand(temp);
+	}
+
+
+	return is;
+}
+
+ostream& operator<<(ostream& os, Report& rhs)
+{
+	os << left << setw(nameLen) << "Candidate"
+		<< setw(voteLen) << "P1"
+		<< setw(voteLen) << "P2"
+		<< setw(voteLen) << "P3"
+		<< setw(voteLen) << "Total"
+		<< endl;
+		
+
+	for (int i = 0; i < rhs.voteList.size(); i++)
+	{
+		os << rhs.voteList[i];
+	}
+	
+	return os;
 }
