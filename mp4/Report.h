@@ -9,13 +9,41 @@ using namespace std;
 class Candidate
 {
 private:
+<<<<<<< HEAD
+	string name = "Doe";
+	int votes[3];
+	int totalVotes = 0;
+	double votePrcs[3];
+	double totalVotePrc = 0.0;
+	int dispType = 0;
+=======
 	string name = "";
 	int votes[3];
 	int voteSum = 0;
+>>>>>>> 7264a62a4c9d8774a8bf9f8103f406c6dffbde28
 public:
 	friend istream& operator>>(istream& is, Candidate& rhs);
 	friend ostream& operator<<(ostream& os, Candidate& rhs);
 
+<<<<<<< HEAD
+	bool operator>(Candidate& rhs);
+	bool operator<(Candidate& rhs);
+
+	void calcTotalVotePrc(int t);
+
+	void setName(string n);
+	void setVotes(int *arr);
+	void setVotePrcs(double *arr);
+	void setTotalVotePrc(double t);
+	void setDispType(int t);
+
+	string getName();
+	int *getVotes();
+	double *getVotePrcs();
+	double getTotalVotePrc();
+	int getTotalVotes();
+	int getDispType();
+=======
 	void setVotes(int *arr);
 	void setName(string name);
 
@@ -24,11 +52,46 @@ public:
 	string retName();
 	int *retVotes();
 	int retVoteSum();
+>>>>>>> 7264a62a4c9d8774a8bf9f8103f406c6dffbde28
 };
 
 class Report
 {
 protected:
+<<<<<<< HEAD
+	vector<Candidate> candList;
+public:
+	virtual void readData(istream& is);
+
+	virtual void dispData(ostream& os);
+
+	void addCand(Candidate c);
+};
+
+class FirstReport : public Report
+{
+protected:
+	int voteTotals[3]{ 0, 0, 0 };
+	int totalVoteSum = 0;
+public:
+	void calcData();
+	void dispData(ostream& os);
+};
+
+class SecondReport : public FirstReport
+{
+public:
+	void calcData();
+	void dispData(ostream& os);
+};
+
+class ThirdReport : public FirstReport
+{
+public:
+	void calcData();
+	void dispData(ostream& os);
+};
+=======
 	vector <Candidate> voteList;
 	//int voteTotals[3];
 	//int voteTotal = 0;
@@ -101,3 +164,4 @@ public:
 //	voteList[i].dispVotes();
 //}
 //cout << setw(nameLen) << "Total";
+>>>>>>> 7264a62a4c9d8774a8bf9f8103f406c6dffbde28
